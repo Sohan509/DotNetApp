@@ -1,0 +1,12 @@
+using DotNetApp.API.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace DotNetApp.API.Data
+{
+    public class DataContext : DbContext
+    {
+        public DataContext(DbContextOptions<DataContext>options):base(options){}           
+        
+        public DbSet<Value> Values { get; set; }
+    }
+}
