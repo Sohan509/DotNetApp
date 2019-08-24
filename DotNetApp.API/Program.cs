@@ -14,6 +14,11 @@ namespace DotNetApp.API
     {
         public static void Main(string[] args)
         {
+            NewMethod(args);
+        }
+
+        private static void NewMethod(string[] args)
+        {
             CreateWebHostBuilder(args).Build().Run();
         }
 
