@@ -46,7 +46,7 @@ namespace DotNetApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> login(UserForLoginDto userForLoginDto)
         {
-            var userFormRepo = await _repo.Login(userForLoginDto.Username, userForLoginDto.Password);
+            var userFormRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
             if (userFormRepo == null)
                 return Unauthorized();
 
