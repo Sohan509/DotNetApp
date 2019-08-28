@@ -7,11 +7,7 @@ namespace DotNetApp.API.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Values",
-                nullable: true,
-                oldClrType: typeof(int));
+            
 
             migrationBuilder.CreateTable(
                 name: "Users",
