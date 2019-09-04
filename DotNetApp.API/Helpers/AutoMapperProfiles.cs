@@ -24,6 +24,9 @@ namespace DotNetApp.API.Helpers
                     opt.MapFrom(d => d.DateOfBirth.calculateAge());
                 });
             CreateMap<Photo, PhotosForDetailedDto>();
+            CreateMap<UserForUpdateDto, User>();
+            CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DotNetApp.API.Data;
 using DotNetApp.API.Dtos;
 using DotNetApp.API.Models;
@@ -19,9 +20,11 @@ namespace DotNetApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
+            _mapper = mapper;
             _config = config;
             _repo = repo;
         }
@@ -72,8 +75,11 @@ namespace DotNetApp.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
-                token = tokenHandler.WriteToken(token)
+            var user = _mapper.Map<UserForListDto>(userFormRepo); 
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token),
+                user
             });
         }
 
